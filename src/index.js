@@ -8,6 +8,7 @@ import Progress from './components/Progress';
 import Homework from './components/Homework';
 import EducationalMaterial from './components/EducationalMaterial';
 import Schedule from './components/Schedule';
+import Home from './components/Home';
 //import { BrowserRouter, Route, Routes };
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -17,7 +18,7 @@ root.render(
     <Routes>
       <Route path="/" element={<App />}>
         {/* <Route index element={<Home />} /> */}
-        <Route path="main" element={<Main />} />
+        <Route path="main" element={<Home />} />
         <Route path="progress" element={<Progress />} />
         <Route path="homework" element={<Homework />} />
         <Route path="educational-material" element={<EducationalMaterial />} />
