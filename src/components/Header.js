@@ -5,7 +5,9 @@ import {
     UserOutlined,
     CalendarOutlined,
     BookOutlined,
-    HomeOutlined
+    HomeOutlined,
+    ShopOutlined,
+    ProductOutlined
 } from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
 import { Link } from 'react-router-dom';
@@ -41,6 +43,16 @@ const items = [
         key: 6,
         label: <Link to="/profile">Profile</Link>,
         icon: <UserOutlined />
+    },
+    {
+        key: 7,
+        label: <Link to="/course">Courses</Link>,
+        icon: <ProductOutlined />
+    },
+    {
+        key: 8,
+        label: <Link to="/catalog">Catalog</Link>,
+        icon: <ShopOutlined />
     }
     // getItem('Main', '1', <BarChartOutlined />),
     // getItem('Progress', '2', <RiseOutlined />),
@@ -50,14 +62,22 @@ const items = [
     // getItem('Profile', '6', <UserOutlined />),
 ];
 const Header = () => {
-    const [collapsed, setCollapsed] = useState(false);
     const {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
     return (
-        <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+        <Sider
+            style={{
+                overflow: 'auto',
+                height: '100vh',
+                position: 'fixed',
+                left: 0,
+                top: 0,
+                bottom: 0,
+            }}
+        >
             <div className="demo-logo-vertical" />
-            <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
+            <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={items} />
         </Sider>
 
     );

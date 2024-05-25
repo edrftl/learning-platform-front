@@ -8,18 +8,17 @@ const { Header: AntHeader } = Layout;
 
 
 const App = () => {
-  const [collapsed, setCollapsed] = useState(false);
   const {
-    token: { colorBgContainer },
+    token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
   return (
-    <Layout
-      style={{
-        minHeight: '100vh',
-      }}
-    >
+    <Layout hasSider>
       <Header />
-      <Layout>
+      <Layout
+        style={{
+          marginLeft: 200,
+        }}
+      >
         <AntHeader
           style={{
             padding: 0,
