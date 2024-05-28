@@ -1,9 +1,8 @@
-// components/Courses.js
 import React, { useEffect, useState } from 'react';
 import { Button, Popconfirm, Space, Table, Tag, message } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
-import { coursesService } from '../services/course.service';
+import { coursesService } from '../../services/course.service';
 
 const getColumns = (deleteHandler) => [
     {
@@ -68,7 +67,7 @@ export default function Courses() {
 
         const res = await coursesService.delete(id);
         if (res.status < 300) {
-            message.success('Product deleted successfully');
+            message.success('Course deleted successfully');
             setCourses(courses.filter(x => x.id !== id));
         } else {
             message.error('Something went wrong!');
@@ -97,10 +96,9 @@ export default function Courses() {
                 onRow={(record, rowIndex) => {
                     return {
                         onClick: (event) => {
-                            const actionColumnIndex = 5; // Index of the "Action" column (zero-based)
+                            const actionColumnIndex = 5;
                             const targetElement = event.target;
 
-                            // Check if the clicked element or its parent is within the "Action" column
                             let isActionColumnClicked = false;
                             let currentElement = targetElement;
                             while (currentElement) {
@@ -111,7 +109,6 @@ export default function Courses() {
                                 currentElement = currentElement.parentElement;
                             }
 
-                            // If not within the "Action" column, navigate to the course info
                             if (!isActionColumnClicked) {
                                 navigate(`info/${record.id}`);
                             }

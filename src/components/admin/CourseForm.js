@@ -3,7 +3,7 @@ import { Button, Form, Input, InputNumber, Select, Upload, message } from 'antd'
 import TextArea from 'antd/es/input/TextArea';
 import { ArrowLeftOutlined, UploadOutlined } from '@ant-design/icons';
 import { useNavigate, useParams } from 'react-router-dom';
-import { coursesService } from '../services/course.service';
+import { coursesService } from '../../services/course.service';
 import { useForm } from 'antd/es/form/Form';
 
 export default function CourseForm() {
@@ -44,7 +44,8 @@ export default function CourseForm() {
         if (editMode) {
             // add neccessary data
             values.id = course.id;
-            values.url = course.url;
+            values.imageUrl = course.imageUrl;
+            values.newImage = values.image;
 
             const res = await coursesService.edit(values);
             console.log(res);
@@ -57,7 +58,6 @@ export default function CourseForm() {
                 alert("Something went wrong!");
         }
         else {
-            console.log(values);
             const res = await coursesService.create(values);
 
             if (res.status < 300) {
@@ -164,8 +164,8 @@ export default function CourseForm() {
                     <TextArea />
                 </Form.Item>
                 <Form.Item
-                    name="url"
-                    label="url"
+                    name="imageUrl"
+                    label="imageUrl"
                     valuePropName="file"
                     getValueFromEvent={normFile}
                     rules={[

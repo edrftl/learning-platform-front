@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const api = process.env.REACT_APP_API + "course/";
+const api = process.env.REACT_APP_API + "group/";
 
-export const coursesService = {
+export const groupsService = {
     getAll() {
         return axios.get(api + "all");
     },
@@ -37,7 +37,4 @@ export const coursesService = {
         return axios.delete(api + id);
     },
 
-    getCategories() {
-        return axios.get(api + "categories");
-    }
 }

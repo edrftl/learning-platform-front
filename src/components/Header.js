@@ -7,7 +7,10 @@ import {
     BookOutlined,
     HomeOutlined,
     ShopOutlined,
-    ProductOutlined
+    ProductOutlined,
+    GroupOutlined,
+    PlusCircleOutlined,
+    LoginOutlined
 } from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
 import { Link } from 'react-router-dom';
@@ -46,14 +49,29 @@ const items = [
     },
     {
         key: 7,
+        label: <Link to="/catalog">Catalog</Link>,
+        icon: <ShopOutlined />
+    },
+    {
+        key: 8,
         label: <Link to="/course">Courses</Link>,
         icon: <ProductOutlined />
     },
     {
-        key: 8,
-        label: <Link to="/catalog">Catalog</Link>,
-        icon: <ShopOutlined />
-    }
+        key: 9,
+        label: <Link to="/group">Groups</Link>,
+        icon: <GroupOutlined />
+    },
+    {
+        key: 10,
+        label: <Link to="register">Register</Link>,
+        icon: <PlusCircleOutlined />
+    },
+    {
+        key: 11,
+        label: <Link to="login">Login</Link>,
+        icon: <LoginOutlined />
+    },
     // getItem('Main', '1', <BarChartOutlined />),
     // getItem('Progress', '2', <RiseOutlined />),
     // getItem('Homework', '3', <HomeOutlined />),
