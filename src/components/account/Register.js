@@ -3,13 +3,18 @@ import { Button, DatePicker, Form, Input, Select, message } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { accountsService } from '../../services/accounts.service';
 import { groupsService } from '../../services/groups.service';
+import { coursesService } from '../../services/course.service';
+
 
 export default function Register() {
     const [groups, setGroups] = useState([]);
+    const [courses, setCourses] = useState([]);
+
     const navigate = useNavigate();
 
     useEffect(() => {
         loadGroups();
+        loadCourses();
     }, []);
 
     const loadGroups = async () => {
@@ -22,12 +27,24 @@ export default function Register() {
             message.error('Failed to load groups');
         }
     };
+    const loadCourses = async () => {
+        try {
+            const res = await coursesService.getAll();
+            const options = res.data.map(course => ({ label: course.name, value: course.id }));
+            setCourses(options);
+        } catch (error) {
+            console.error('Failed to load groups:', error);
+            message.error('Failed to load groups');
+        }
+    };
 
     const onFinish = async (values) => {
         console.log('Success:', values);
 
         try {
             const res = await accountsService.register(values);
+
+            console.log(res.data);
 
             if (res.status >= 300) {
                 message.error("Something went wrong!");
@@ -147,6 +164,22 @@ export default function Register() {
                         options={groups}
                     />
                 </Form.Item>
+                <Form.Item
+                    label="Course"
+                    name="courseId"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Please select a group!',
+                        },
+                    ]}
+                >
+                    <Select
+                        placeholder="Select a group"
+                        options={courses}
+                    />
+                </Form.Item>
+
 
                 <Form.Item
                     style={center}

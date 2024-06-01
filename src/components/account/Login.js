@@ -3,6 +3,8 @@ import { Button, Form, Input, message } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { accountsService } from '../../services/accounts.service';
 
+
+
 export default function Login() {
     const navigate = useNavigate();
 
@@ -11,13 +13,14 @@ export default function Login() {
 
         try {
             const res = await accountsService.login(values);
-
+            //console.log(res);
             message.success("Your logged in successfully!");
             navigate(-1);
 
         } catch (error) {
             message.error(error.response.data.message);
         }
+
     };
 
     return (
@@ -73,6 +76,7 @@ export default function Login() {
         </>
     );
 }
+    
 
 const center = {
     textAlign: "center"
