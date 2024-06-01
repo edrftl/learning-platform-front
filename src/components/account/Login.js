@@ -13,7 +13,7 @@ export default function Login() {
 
         try {
             const res = await accountsService.login(values);
-            //console.log(res);
+            console.log(res.data);
             message.success("Your logged in successfully!");
             navigate(-1);
 
@@ -76,7 +76,7 @@ export default function Login() {
         </>
     );
 }
-    
+
 
 const center = {
     textAlign: "center"

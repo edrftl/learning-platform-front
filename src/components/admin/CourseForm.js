@@ -48,7 +48,7 @@ export default function CourseForm() {
             values.newImage = values.image;
 
             const res = await coursesService.edit(values);
-            console.log(res);
+            console.log(values.imageUrl);
 
             if (res.status < 300) {
                 message.success("Product updated successfully!");
@@ -59,6 +59,7 @@ export default function CourseForm() {
         }
         else {
             const res = await coursesService.create(values);
+            console.log(values.imageUrl);
 
             if (res.status < 300) {
                 message.success("Product created successfully!");
